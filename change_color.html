@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+<title>color change</title>
+<meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<style>
+    body{
+        text-align: center;
+    }
+    
+</style>
+    </head>
+
+    <body>
+        <div>
+            <select id="colorSelect" onchange="changeBackgroundColor()">
+                <option value="red">Red</option>
+                <option value="green">Green</option>
+                <option value="blue">Blue</option>
+                <option value="pink">Pink</option>
+
+              </select>
+        </div>
+    </body>
+    <script>
+       
+        function changeBackgroundColor(){
+            var colorSelect = document.getElementById('colorSelect');
+            var changecolor = colorSelect.value;
+
+            document.body.style.backgroundColor =changecolor;
+        }
+        
+    </script>
+</html>
