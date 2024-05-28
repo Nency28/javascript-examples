@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Popup Form </title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    .button {
+      background-color: #555;
+      color: white;
+      padding: 16px 20px;
+      border: none;
+      cursor: pointer;
+      opacity: 0.8;
+      position: fixed;
+
+
+    }
+
+    .popup {
+      display: none;
+      position: fixed;
+      border: 3px solid #f1f1f1;
+    }
+
+    .form {
+      max-width: 400px;
+      padding: 10px;
+      background-color: white;
+    }
+
+    .form input[type=text],
+    .form input[type=password] {
+      width: 100%;
+      padding: 10px;
+      margin: 5px 0 22px 0;
+      border: none;
+      background: #f1f1f1;
+    }
+  </style>
+</head>
+
+<body>
+
+  <button class="button" onclick="openform()">Click</button>
+
+  <div class="popup" id="form1">
+    <form action="" class="form">
+
+      <label for="name">Name</label>
+      <input type="text" name="name" id="name">
+
+      <label for="email">Email</label>
+      <input type="text" name="email" id="email">
+
+
+      <span type="submit" class="btn" onclick="login()">Login</span>
+    </form>
+
+  </div>
+  <p id="demo" style="margin-left: 500px;"></p>
+
+
+
+  <script>
+    function openform() {
+      document.getElementById("form1").style.display = "block";
+    }
+
+    function login() {
+      let uname = document.getElementById("name").value;
+      let uemail = document.getElementById("email").value;
+      let text = uname + " " + uemail;
+
+
+
+      //console.log(text);
+      document.getElementById("demo").innerHTML = text;
+
+
+
+    }
+
+
+
+
+  </script>
+</body>
+
+</html>

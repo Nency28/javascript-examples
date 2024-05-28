@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Popup Form2 </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <style>
+        .popupForm {
+            display: none;
+            position: fixed;
+            border: 3px solid #f1f1f1;
+        }
+
+        .form label {
+            margin-bottom: 5px;
+        }
+
+        .form input[type="text"],
+        .form input[type="email"] {
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <button id="showForm">Show Form</button>
+
+    <div class="popupForm" id="popup">
+        <form action="" class="form">
+
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name"> <br>
+
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email"><br>
+
+            <span type="submit" class="btn" id="btn">Login</span>
+        </form>
+    </div>
+
+    <p id="demo" style="margin-left: 500px;"></p>
+
+
+
+
+    <script>
+        $(document).ready(function () {
+            //var counter = 0;
+
+            $('#showForm').click(function () {
+                $('#popup').fadeIn();
+            });
+
+           
+            $('#btn').click(function () {
+
+                var name = $('#name').val();
+                var email = $('#email').val();
+                var txt = 'Name:' + name + "  " + 'Email:' + email + "<br>" ;
+
+                let txt1 ="";
+                for( let i=1; i<=5; i++){
+                    $('#demo').html(txt1 += txt )  ; 
+                }
+                 
+                $('#name').val('');
+                $('#email').val('');
+      
+
+               /* if (counter < 5) {
+                    var name = $('#name').val();
+                    var email = $('#email').val();
+                    //var txt = 'Name:' + name + "  " + 'Email:' + email;
+                    //$('#demo').text(txt,);
+                    console.log('form data', counter + 1);
+
+                console.log('Name:', name);
+                console.log('Email:', email); 
+                    counter++;
+
+                }  */
+
+
+
+
+                // console.log('Name:', name);
+                //console.log('Email:', email); 
+
+            });
+        });
+
+    </script>
+
+
+</body>
+
+</html>

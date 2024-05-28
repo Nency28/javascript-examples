@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Popup Form1 </title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  
+  <style>
+   
+
+    .popupForm {
+      display: none;
+      position: fixed;
+      border: 3px solid #f1f1f1;
+    }
+    
+    .form label {
+      margin-bottom: 5px;
+    } 
+    
+    .form input[type="text"],
+    .form input[type="email"] 
+    {
+      padding: 5px;
+      margin-bottom: 10px;
+    }
+    
+     
+   
+  </style>
+
+</head>
+<body>
+ 
+    <button id="showForm">Show Form</button>
+  
+      <div class="popupForm" id="popup">
+        <form action="" class="form">
+
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name"> <br>
+  
+          <label for="email">Email:</label>
+          <input type="text" id="email" name="email"><br>
+  
+          <span type="submit" class="btn" id="btn">Login</span>
+        </form>
+      </div>
+
+      <p id="demo" style="margin-left: 500px;"></p>
+
+  
+  
+
+    <script>
+      $(document).ready(function() {
+        $('#showForm').click(function() {
+          $('#popup').fadeIn();
+        });
+      
+      
+
+        $('#btn').click(function(){
+          var name = $('#name'). val();
+          var email = $('#email').val();
+          console.log(name);
+          var txt = 'Name:'+ name + "  " + 'Email:' +email;
+          $('#demo').text(txt);
+
+         // console.log('Name:', name);
+         
+          //console.log('Email:', email); 
+
+          $('#name').val('');
+          $('#email').val('');
+          
+
+        });
+      });
+
+      
+      
+    </script>
+  
+  
+</body>
+</html>
