@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            background-color: #031f3d;
+        }
+        
+        .container {
+            max-width: 80%;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        h1 {
+            text-align: center;
+        }
+        
+        .input-container {
+            display: flex;
+        }
+        
+        input[type="text"] {
+            margin-right: 50px;
+            flex-grow: 1;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px 0 0 5px;
+        }
+        
+        button {
+            margin-left: auto;
+            width: 10%;
+            padding: 15px ;
+            background-color:#031f3d;
+            color: #fff;
+            border: none;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+        }
+        .counter{
+              margin-top: 15px;
+        }
+        
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        li {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin: 5px 0;
+            padding: 10px;
+        }
+        
+        li button {
+            background-color: #031f3d;
+            color: #fff;
+            border: none;
+            
+            padding: 15px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>To-Do List</h1>
+        <div class="input-container">
+            <input type="text" id="task" placeholder="Add a new task...">
+            <button id="addTask">Add</button>
+        </div>
+        <div class="counter">Pending tasks: <span id="pendingCount">0</span></div>
+        <ul id="taskList">
+            <!-- Tasks will be added here dynamically -->
+        </ul>
+        <h2>Completed Tasks</h2>
+        <ul id="completedList">
+            <!-- Completed tasks will be added here dynamically -->
+        </ul>
+    </div>
+    <script >
+        document.addEventListener('DOMContentLoaded', function() {
+            const taskInput = document.getElementById('task');
+            const addTaskButton = document.getElementById('addTask');
+            const taskList = document.getElementById('taskList');
+            const completedList = document.getElementById('completedList');
+            const pendingCount = document.getElementById('pendingCount');
+        
+            addTaskButton.addEventListener('click', function() {
+                const taskText = taskInput.value.trim();
+        
+                if (taskText !== '') {
+                    const li = document.createElement('li');
+                    li.innerHTML = `
+                        <input type="checkbox">
+                        <span>${taskText}</span>
+                        <button>Delete</button>
+                    `;
+                    taskList.appendChild(li);
+        
+                    taskInput.value = '';
+        
+                    const checkbox = li.querySelector('input[type="checkbox"]');
+                    checkbox.addEventListener('change', function() {
+                        if (checkbox.checked) {
+                            li.style.textDecoration = 'none';
+                            completedList.appendChild(li);
+                        } else {
+                            li.style.textDecoration = 'none';
+                            taskList.appendChild(li);
+                        }
+                        updatePendingCount();
+                    });
+        
+                    li.querySelector('button').addEventListener('click', function() {
+                        li.parentElement.removeChild(li);
+                        updatePendingCount();
+                    });
+        
+                    updatePendingCount();
+                }
+            });
+        
+            function updatePendingCount() {
+                const pendingTasks = document.querySelectorAll('#taskList li input[type="checkbox"]:not(:checked)').length;
+                pendingCount.textContent = pendingTasks;
+            }
+        });
+        
+    </script>
+</body>
+</html>
